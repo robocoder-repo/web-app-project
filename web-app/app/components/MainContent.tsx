@@ -1,9 +1,14 @@
 
+'use client'
+
 import Image from 'next/image';
+import { useAppContext } from '../AppContext';
 
 export default function MainContent() {
+  const { theme, toggleTheme } = useAppContext();
+
   return (
-    <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <main className={`flex flex-col gap-8 row-start-2 items-center sm:items-start ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       <Image
         className="dark:invert"
         src="https://nextjs.org/icons/next.svg"
@@ -49,6 +54,16 @@ export default function MainContent() {
           Read our docs
         </a>
       </div>
+      <button
+        onClick={toggleTheme}
+        className={`mt-4 px-4 py-2 rounded ${
+          theme === 'dark'
+            ? 'bg-white text-black'
+            : 'bg-black text-white'
+        }`}
+      >
+        Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode
+      </button>
     </main>
   );
 }
