@@ -36,6 +36,7 @@ export default function MainContent() {
             alt="Vercel logomark"
             width={20}
             height={20}
+            loading="lazy"
           />
           Deploy now
         </a>
